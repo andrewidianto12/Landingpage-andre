@@ -1,0 +1,23 @@
+.kerlap {
+  animation-name: kerlap;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  display: inline-block;
+}
+
+@keyframes kerlap {
+  0%   { opacity: 1; transform: translateY(0); filter: drop-shadow(0 0 12px rgb(147 51 234 / 0.4)); }
+  8%   { opacity: 0.18; transform: translateY(-2px); }
+  16%  { opacity: 1; transform: translateY(0); }
+  60%  { opacity: 1; transform: translateY(0); }
+  68%  { opacity: 0.15; transform: translateY(-1px); }
+  76%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 1; transform: translateY(0); }
+}
