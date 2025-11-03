@@ -14,6 +14,7 @@ export default function Starfield({ count = 120 }: { count?: number }) {
     const devicePR = window.devicePixelRatio || 1;
 
     function resizeCanvas() {
+      // use the non-null canvas and context captured above
       const w = c.clientWidth || window.innerWidth;
       const h = c.clientHeight || window.innerHeight;
       c.width = Math.max(1, Math.floor(w * devicePR));
