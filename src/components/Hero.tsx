@@ -1,5 +1,6 @@
 import AnimatedName from '../styles/AnimatedName';
 import Starfield from '../styles/Starfield';
+import CustomCursor from '../components/CustomCursor';
 
 export default function Hero() {
   return (
@@ -11,6 +12,7 @@ export default function Hero() {
         backgroundRepeat: 'no-repeat'
       }}
     >
+      <CustomCursor />
       <Starfield />
       <div className="relative z-10">
         <p className="text-gray-400 mb-2">Hey, I’m</p>

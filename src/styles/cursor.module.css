@@ -1,0 +1,57 @@
+.cursorWrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+/* glass circle */
+.cursorGlass {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transform: translate3d(-50%,-50%,0);
+  transition: width .18s ease, height .18s ease, background .18s ease, border .18s ease, opacity .18s ease, box-shadow .18s;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  box-shadow: 0 10px 22px rgba(8,10,20,0.4), inset 0 1px 0 rgba(255,255,255,0.02);
+  opacity: 0;
+  will-change: transform, width, height, opacity;
+}
+
+/* small dot */
+.cursorDot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+  transform: translate3d(-50%,-50%,0);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform .12s ease, opacity .12s ease;
+}
+
+/* active/click state */
+.active {
+  width: 64px;
+  height: 64px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.activeDot {
+  transform: translate3d(-50%,-50%,0) scale(0.6);
+  opacity: 0.9;
+}
+
+/* hover on interactive element */
+.hover {
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.16);
+}
