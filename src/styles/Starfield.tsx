@@ -8,24 +8,26 @@ export default function Starfield({ count = 120 }: { count?: number }) {
   useEffect(() => {
     const c = canvasRef.current;
     if (!c) return;
-    const ctx = c.getContext('2d');
+    const canvas = c as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    // alias a non-null context so TypeScript won't complain inside nested functions
+    const ctx2 = ctx;
 
     const devicePR = window.devicePixelRatio || 1;
 
     function resizeCanvas() {
-      // use the non-null canvas and context captured above
-      const w = c.clientWidth || window.innerWidth;
-      const h = c.clientHeight || window.innerHeight;
-      c.width = Math.max(1, Math.floor(w * devicePR));
-      c.height = Math.max(1, Math.floor(h * devicePR));
-      ctx.setTransform(devicePR, 0, 0, devicePR, 0, 0);
+      const w = canvas.clientWidth || window.innerWidth;
+      const h = canvas.clientHeight || window.innerHeight;
+      canvas.width = Math.max(1, Math.floor(w * devicePR));
+      canvas.height = Math.max(1, Math.floor(h * devicePR));
+      ctx2.setTransform(devicePR, 0, 0, devicePR, 0, 0);
     }
 
     resizeCanvas();
     const stars = Array.from({ length: count }).map(() => ({
-      x: Math.random() * (c.clientWidth || window.innerWidth),
-      y: Math.random() * (c.clientHeight || window.innerHeight),
+      x: Math.random() * (canvas.clientWidth || window.innerWidth),
+      y: Math.random() * (canvas.clientHeight || window.innerHeight),
       r: Math.random() * 1.4 + 0.2,
       speed: 0.15 + Math.random() * 0.9,
       alpha: 0.4 + Math.random() * 0.6,
@@ -36,22 +38,22 @@ export default function Starfield({ count = 120 }: { count?: number }) {
     window.addEventListener('resize', onResize);
 
     function render() {
-      ctx.clearRect(0, 0, c.clientWidth, c.clientHeight);
+      ctx2.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
       for (const s of stars) {
         s.y += s.speed;
-        if (s.y > c.clientHeight + 10) s.y = -10;
+        if (s.y > canvas.clientHeight + 10) s.y = -10;
         s.alpha += 0.01 * s.tw;
         if (s.alpha <= 0.2) { s.alpha = 0.2; s.tw = 1; }
         if (s.alpha >= 1) { s.alpha = 1; s.tw = -1; }
 
-        ctx.beginPath();
-        ctx.globalAlpha = s.alpha;
-        ctx.fillStyle = 'white';
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
+        ctx2.beginPath();
+        ctx2.globalAlpha = s.alpha;
+        ctx2.fillStyle = 'white';
+        ctx2.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx2.fill();
       }
-      ctx.globalAlpha = 1;
+      ctx2.globalAlpha = 1;
       rafRef.current = requestAnimationFrame(render);
     }
 
