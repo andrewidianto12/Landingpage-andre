@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import React from 'react';
+import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
+import Starfield from '../styles/Starfield';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +31,24 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
+        {/* full-page gradient + starfield */}
+        <div
+          className="relative min-h-screen"
+          style={{
+            backgroundImage:
+              'linear-gradient(135deg, rgb(6 10 25) 0%, rgb(14 23 47) 50%, rgb(88 60 189) 100%)',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          <Starfield />
+          <div className="relative z-10">
+            {/* mount Sidebar and navbar above the background */}
+            <Sidebar />
+            <Navbar />
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
