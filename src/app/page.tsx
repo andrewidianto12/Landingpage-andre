@@ -1,11 +1,13 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import React from 'react';
+import Hero from '../components/Hero';
+import About from '../components/About';
 
-export default function Home() {
+export default function Page() {
   return (
-    <main className="bg-black text-white min-h-screen">
-      <Navbar />
+    <>
       <Hero />
-    </main>
+      <About />
+      {/* ...section lain jika ada */}
+    </>
   );
 }
