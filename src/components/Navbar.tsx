@@ -21,14 +21,15 @@ export default function Navbar() {
         <a
           href="#hero"
           className="
-            text-transparent bg-clip-text
-            bg-gradient-to-r from-[#4FC3F7] via-[#7E57C2] to-[#2196F3]
-            text-lg md:text-xl font-bold tracking-wide
-            hover:opacity-80 transition-opacity
-          "
+    text-transparent bg-clip-text
+    bg-gradient-to-r from-[#4FC3F7] via-[#7E57C2] to-[#2196F3]
+    text-lg md:text-xl font-bold tracking-wide
+    hover:opacity-80 transition-opacity
+  "
         >
           MAW.
         </a>
+
       </div>
 
       {/* Right side - menu toggle */}
