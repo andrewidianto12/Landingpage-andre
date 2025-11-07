@@ -15,10 +15,10 @@ export default function Hero() {
       <CustomCursor />
       <Starfield />
       <div className="relative z-10">
-        <p className="text-gray-400 mb-2">Hey, I’m</p>
+        <p className="text-gray-400 mb-2">Hello, I’m</p>
         <AnimatedName name="Muhammad Andre Widianto" />
         <p className="max-w-2xl mt-6 text-gray-300 leading-relaxed">
-          I’m a DevOps Engineer specializing in Cloud Infrastructure, CI/CD, and Golang backend. 
+          I’m a DevOps Engineer specializing in Cloud Infrastructure, CI/CD, and Golang backend.
           I love creating things that live on the internet — from scalable systems to automation pipelines.
         </p>
       </div>
@@ -44,7 +44,7 @@ export default function Hero() {
         </a>
       </div>
 
-    
+
     </section>
   );
 }
