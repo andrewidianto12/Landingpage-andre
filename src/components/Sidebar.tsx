@@ -6,6 +6,7 @@ export default function Sidebar() {
     const closeBtnRef = useRef<HTMLButtonElement | null>(null);
     const panelRef = useRef<HTMLElement | null>(null);
 
+    // listen event untuk buka sidebar
     useEffect(() => {
         const onOpen = () => setOpen(true);
         const onKey = (e: KeyboardEvent) => {
@@ -20,19 +21,16 @@ export default function Sidebar() {
         };
     }, []);
 
-    // lock scroll and focus management
+    // lock scroll dan auto focus
     useEffect(() => {
         document.body.style.overflow = open ? 'hidden' : '';
-        if (open) {
-            // focus close button when opened
-            setTimeout(() => closeBtnRef.current?.focus(), 50);
-        }
+        if (open) setTimeout(() => closeBtnRef.current?.focus(), 50);
         return () => {
             document.body.style.overflow = '';
         };
     }, [open]);
 
-    // simple focus trap inside panel
+    // focus trap agar tab tetap di panel
     useEffect(() => {
         if (!open || !panelRef.current) return;
         const panel = panelRef.current;
@@ -48,16 +46,12 @@ export default function Sidebar() {
 
         const onKey = (e: KeyboardEvent) => {
             if (e.key !== 'Tab') return;
-            if (e.shiftKey) {
-                if (document.activeElement === first) {
-                    e.preventDefault();
-                    last.focus();
-                }
-            } else {
-                if (document.activeElement === last) {
-                    e.preventDefault();
-                    first.focus();
-                }
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
             }
         };
 
@@ -68,42 +62,48 @@ export default function Sidebar() {
     return (
         <>
             {/* overlay */}
-            <div
-                onClick={() => setOpen(false)}
-                aria-hidden={!open}
-            />
+            {open && (
+                <div
+                    className="fixed inset-0 z-[70] bg-black/40 backdrop-blur-sm transition-opacity duration-300"
+                    onClick={() => setOpen(false)}
+                    aria-hidden={!open}
+                />
+            )}
 
-            {/* sidebar panel (right) */}
+            {/* sidebar panel */}
             <aside
                 id="site-sidebar"
                 ref={panelRef}
                 aria-hidden={!open}
-                className={`fixed right-0 top-0 z-50 h-full w-80 max-w-[90%] transform transition-transform duration-300 ease-in-out
+                className={`fixed top-0 right-0 z-[80] h-full w-full sm:w-[80%] md:w-[400px] max-w-full
+          transform transition-transform duration-300 ease-in-out
           ${open ? 'translate-x-0' : 'translate-x-full'}
-          bg-white/6 backdrop-blur-md border-l border-white/10 text-white p-6`}
+          bg-gray-900/90 backdrop-blur-lg border-l border-white/10 text-white p-6 flex flex-col`}
             >
+                {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                     <h3 className="text-lg font-semibold">Menu</h3>
                     <button
                         ref={closeBtnRef}
                         onClick={() => setOpen(false)}
                         aria-label="Close menu"
-                        className="p-1 rounded-md bg-white/4 hover:bg-white/6 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                        className="p-2 rounded-md bg-white/10 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-blue-300"
                     >
-                        x
+                        ✕
                     </button>
                 </div>
 
-                <nav className="flex flex-col gap-6 text-lg">
-                    <a href="#about" onClick={() => setOpen(false)} className="py-2 px-2 rounded hover:bg-white/4 transition">About</a>
-                    <a href="#works" onClick={() => setOpen(false)} className="py-2 px-2 rounded hover:bg-white/4 transition">Works</a>
-                    <a href="#contact" onClick={() => setOpen(false)} className="py-2 px-2 rounded hover:bg-white/4 transition">Contact</a>
-                    <a href="/resume.pdf" onClick={() => setOpen(false)} className="py-2 px-2 rounded hover:bg-white/4 transition">Resume</a>
+                {/* Navigation */}
+                <nav className="flex flex-col gap-5 text-lg">
+                    <a href="#about" onClick={() => setOpen(false)} className="py-2 px-2 rounded hover:bg-white/10 transition">About</a>
+                    <a href="#works" onClick={() => setOpen(false)} className="py-2 px-2 rounded hover:bg-white/10 transition">Works</a>
+                    <a href="#contact" onClick={() => setOpen(false)} className="py-2 px-2 rounded hover:bg-white/10 transition">Contact</a>
+                    <a href="/resume.pdf" onClick={() => setOpen(false)} className="py-2 px-2 rounded hover:bg-white/10 transition">Resume</a>
                 </nav>
 
-                <div className="mt-8 border-t border-white/6 pt-6 text-sm text-gray-200">
-                    <p>DevOps Engineer</p>
-                    <p className="mt-2">Cloud · CI/CD · Golang</p>
+                {/* Footer */}
+                <div className="mt-auto border-t border-white/10 pt-6 text-sm text-gray-300">
+                    <p>Create at 2025</p>
                 </div>
             </aside>
         </>
