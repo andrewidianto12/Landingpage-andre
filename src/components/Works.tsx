@@ -90,7 +90,9 @@ export default function Works() {
                     {experiences.map((exp, index) => (
                         <div key={exp.id} className="relative mb-12 pl-10">
                             {/* Number indicator */}
-                            <div className="absolute -left-[1.6rem] top-1 w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-r from-[#4FC3F7] to-[#7E57C2] text-white font-semibold shadow-md"> {index + 1} </div>
+                            <div className="absolute -left-[1.6rem] top-1 w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-r from-[#4FC3F7] to-[#7E57C2] text-white font-semibold shadow-md">
+                                {index + 1}
+                            </div>
 
                             {/* Card */}
                             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.01] transition-all duration-300">
@@ -99,10 +101,7 @@ export default function Works() {
                                 </p>
                                 <h3 className="text-lg sm:text-xl font-semibold">
                                     {exp.title} ·{' '}
-                                    <span
-                                        className="bg-gradient-to-r from-[#4FC3F7] via-[#7E57C2] to-[#2196F3]
-                               bg-clip-text text-transparent font-semibold drop-shadow-[0_0_6px_rgba(79,195,247,0.6)]"
-                                    >
+                                    <span className="bg-gradient-to-r from-[#4FC3F7] via-[#7E57C2] to-[#2196F3] bg-clip-text text-transparent font-semibold drop-shadow-[0_0_6px_rgba(79,195,247,0.6)]">
                                         {exp.company}
                                     </span>
                                 </h3>

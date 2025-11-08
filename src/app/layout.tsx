@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import React from 'react';
-import Navbar from '../components/Navbar';
-import Starfield from '../styles/Starfield';
+import React from "react";
+import Navbar from "../components/Navbar";
+import Starfield from "../styles/Starfield";
+import Footer from "../components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,18 +33,20 @@ export default function RootLayout({
       >
         {/* full-page gradient + starfield */}
         <div
-          className="relative min-h-screen"
+          className="relative min-h-screen flex flex-col"
           style={{
             backgroundImage:
-              'linear-gradient(135deg, rgb(6 10 25) 0%, rgb(14 23 47) 50%, rgb(88 60 189) 100%)',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
+              "linear-gradient(135deg, rgb(6 10 25) 0%, rgb(14 23 47) 50%, rgb(88 60 189) 100%)",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
           }}
         >
+          {/* Background animation layer */}
           <Starfield />
           <div className="relative z-10">
             <Navbar />
-            {children}
+            <main className="flex-grow">{children}</main>
+            <Footer /> {/* ✅ Footer di bagian bawah halaman */}
           </div>
         </div>
       </body>
