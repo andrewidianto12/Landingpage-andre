@@ -83,9 +83,11 @@ export default function Works() {
     return (
         <section id="works" className="py-20 px-6 sm:px-12 lg:px-24 text-white">
             <div className="max-w-5xl mx-auto">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-12 bg-gradient-to-r from-[#4FC3F7] via-[#7E57C2] to-[#2196F3] bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(79,195,247,0.4)]">
+                {/* ✅ Judul di tengah dan putih */}
+                <h2 className="text-center text-3xl sm:text-4xl font-bold mb-12 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                     Experience
                 </h2>
+
                 <div className="relative border-l border-[#7E57C2]/40 ml-6">
                     {experiences.map((exp, index) => (
                         <div key={exp.id} className="relative mb-12 pl-10">

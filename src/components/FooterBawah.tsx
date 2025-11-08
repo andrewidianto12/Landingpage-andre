@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-export default function Footer() {
+export default function footer() {
     return (
         <footer className="relative mt-20 overflow-hidden rounded-t-2xl border-t border-white/10 bg-white/5 backdrop-blur-2xl text-gray-300 py-8 px-6 sm:px-12 lg:px-20 shadow-[0_0_30px_rgba(79,195,247,0.15)]">
             {/* Subtle gradient glass overlay */}

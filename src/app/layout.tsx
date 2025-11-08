@@ -4,7 +4,9 @@ import "./globals.css";
 import React from "react";
 import Navbar from "../components/Navbar";
 import Starfield from "../styles/Starfield";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
+import Footer from "../components/FooterBawah";
+import TechMarquee from "../components/TechMarquee"; // ✅ gunakan relative path agar konsisten
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +33,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* full-page gradient + starfield */}
+        {/* Background gradient + starfield */}
         <div
           className="relative min-h-screen flex flex-col"
           style={{
@@ -41,12 +43,21 @@ export default function RootLayout({
             backgroundRepeat: "no-repeat",
           }}
         >
-          {/* Background animation layer */}
+          {/* Layer bintang */}
           <Starfield />
-          <div className="relative z-10">
+
+          {/* Konten utama */}
+          <div className="relative z-10 flex flex-col min-h-screen">
             <Navbar />
-            <main className="flex-grow">{children}</main>
-            <Footer /> {/* ✅ Footer di bagian bawah halaman */}
+
+            {/* Main content */}
+            <main className="flex-grow">
+              {children}
+              <TechMarquee /> {/* ✅ Muncul sebelum Footer */}
+            </main>
+
+            {/* Footer di paling bawah */}
+            <Footer />
           </div>
         </div>
       </body>
