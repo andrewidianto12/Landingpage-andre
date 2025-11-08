@@ -33,7 +33,7 @@ export default function About() {
                 <div>
                   <h3 className="text-sm text-gray-300 uppercase tracking-wider">What I do</h3>
                   <ul className="mt-3 text-gray-200 space-y-2">
-                    <li>• Cloud infrastructure (AWS / GCP)</li>
+                    <li>• Cloud infrastructure </li>
                     <li>• CI/CD & automation</li>
                     <li>• Observability & SRE practices</li>
                     <li>• Backend services with Go</li>
@@ -43,7 +43,7 @@ export default function About() {
                 <div>
                   <h3 className="text-sm text-gray-300 uppercase tracking-wider">Tools & Tech</h3>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {['Golang', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'Prometheus'].map(t => (
+                    {['Golang', 'Docker', 'Openshift', 'Linux'].map(t => (
                       <span
                         key={t}
                         className="text-sm bg-white/4 border border-white/6 px-3 py-1 rounded-full text-gray-100"

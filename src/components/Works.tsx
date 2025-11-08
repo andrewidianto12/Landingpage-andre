@@ -83,31 +83,17 @@ export default function Works() {
     return (
         <section id="works" className="py-20 px-6 sm:px-12 lg:px-24 text-white">
             <div className="max-w-5xl mx-auto">
-                <h2
-                    className="text-3xl sm:text-4xl font-bold mb-12
-                     bg-gradient-to-r from-[#4FC3F7] via-[#7E57C2] to-[#2196F3]
-                     bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(79,195,247,0.4)]"
-                >
+                <h2 className="text-3xl sm:text-4xl font-bold mb-12 bg-gradient-to-r from-[#4FC3F7] via-[#7E57C2] to-[#2196F3] bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(79,195,247,0.4)]">
                     Experience
                 </h2>
-
                 <div className="relative border-l border-[#7E57C2]/40 ml-6">
                     {experiences.map((exp, index) => (
                         <div key={exp.id} className="relative mb-12 pl-10">
                             {/* Number indicator */}
-                            <div
-                                className="absolute -left-[1.6rem] top-1 w-8 h-8 flex items-center justify-center
-                           rounded-full bg-gradient-to-r from-[#4FC3F7] to-[#7E57C2]
-                           text-white font-semibold shadow-md"
-                            >
-                                {index + 1}
-                            </div>
+                            <div className="absolute -left-[1.6rem] top-1 w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-r from-[#4FC3F7] to-[#7E57C2] text-white font-semibold shadow-md"> {index + 1} </div>
 
                             {/* Card */}
-                            <div
-                                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6
-                           shadow-sm hover:shadow-lg hover:scale-[1.01] transition-all duration-300"
-                            >
+                            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.01] transition-all duration-300">
                                 <p className="text-xs font-semibold tracking-widest mb-2 text-[#7DD3FC]">
                                     {exp.period}
                                 </p>
