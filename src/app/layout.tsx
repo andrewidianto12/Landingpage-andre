@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import React from 'react';
-import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
 import Starfield from '../styles/Starfield';
 
@@ -43,8 +42,6 @@ export default function RootLayout({
         >
           <Starfield />
           <div className="relative z-10">
-            {/* mount Sidebar and navbar above the background */}
-            <Sidebar />
             <Navbar />
             {children}
           </div>
